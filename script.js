@@ -22,7 +22,6 @@ var count = 0;
 
 function Shalzen(url, alt = "", larghezza = "200px"){
   count++;
-  sound.play();
   if(count == 9){
   const img = document.createElement("img");
   img.src = url;
