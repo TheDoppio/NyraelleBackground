@@ -1,0 +1,115 @@
+body {
+  background: #0d0d0d; /* Colore da pergamena antica bruciacchiata */
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 4px;
+  font-size: 20px;
+}
+h1{
+  color: black;
+}
+
+.fire-branding {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px; /* Spazio tra lettere */
+  line-height: 1.2;
+}
+
+.letter {
+  position: relative;
+  opacity: 0;
+  color: #000;
+  min-width: 0.6em; /* Dà corpo anche alle lettere strette */
+}
+
+.letter[data-char=" "] {
+  width: 6px;
+  min-width: 6px;
+  opacity: 1; /* Rendi visibili gli spazi */
+  color: transparent; /* Invisibili ma presenti */
+  pointer-events: none;
+}
+
+.letter::before {
+  content: attr(data-char);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 85, 0, 0.7),
+               0 0 20px rgba(255, 100, 0, 0.5),
+               0 0 30px rgba(255, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.1s ease, text-shadow 0.2s ease;
+}
+
+.burned {
+  opacity: 1;
+  transition: color 0.2s ease-in-out;
+}
+
+.burned::before {
+  opacity: 1;
+  animation: glowout 0.8s ease forwards;
+}
+
+@keyframes glowout {
+  0% {
+    opacity: 1;
+    text-shadow:
+      0 0 10px rgba(255, 140, 0, 0.8),
+      0 0 20px rgba(255, 80, 0, 0.6),
+      0 0 30px rgba(255, 0, 0, 0.4);
+  }
+  100% {
+    opacity: 0;
+    text-shadow: none;
+  }
+}
+.fuoco {
+  color: #black;
+  font-weight: bold;
+  text-shadow:
+    0 0 10px rgba(255, 140, 0, 0.8),
+    0 0 20px rgba(255, 80, 0, 0.6),
+    0 0 30px rgba(255, 0, 0, 0.4);
+  animation: flicker 3s infinite;
+}
+@keyframes flicker{
+  0% { text-shadow:
+      0 0 10px rgba(255, 140, 0, 0.8),
+      0 0 20px rgba(255, 80, 0, 0.6),
+      0 0 30px rgba(255, 0, 0, 0.4);}
+  50% { text-shadow:
+  0 0 10px rgba(255, 140, 0, 0.4),
+  0 0 20px rgba(255, 80, 0, 0.3),
+  0 0 30px rgba(255, 0, 0, 0.2);}
+  100% { text-shadow:
+  0 0 10px rgba(255, 140, 0, 0.8),
+  0 0 20px rgba(255, 80, 0, 0.6),
+  0 0 30px rgba(255, 0, 0, 0.4);}
+}
+
+.immagineOverlay {
+  position: fixed;
+  height: 100%;
+  display: none;
+  z-index: 9999;
+  margin: 0;
+  animation: Dysperia 4.28s;
+  background-color: black;
+  padding: 100%;
+}
+@keyframes Dysperia{
+  0%,100%{
+    opacity: 0
+  }
+  10%,90%{
+    opacity: 1
+  }
+}
